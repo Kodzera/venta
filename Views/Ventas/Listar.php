@@ -1,4 +1,4 @@
-<?php encabezado() ?>
+<?php encabezado()?>
 <!-- Begin Page Content -->
 <div class="page-content bg-light">
     <div class="page-header bg-light">
@@ -29,12 +29,13 @@
             <input id="cantidad" class="form-control" type="text" name="cantidad" onkeyup="IngresarCantidad(event);">
         </div>
     </div>
-    <div class="col-lg-3">
-        <div class="form-group">
-            <label for="precioP">Precio</label>
-            <input id="precioP" class="form-control" type="text" name="precioP" readonly>
-        </div>
+    <div class="col-lg-2">
+    <div class="form-group">
+        <label for="nombreP">Código del producto</label>
+        <input id="codigoP" class="form-control" type="text" name="codigoP" readonly>
     </div>
+</div>
+
 </form>
 
 
@@ -83,4 +84,4 @@
         </div>
     </section>
 </div>
-<?php pie() ?>
+<?php pie()?>

@@ -223,7 +223,7 @@ function BuscarProductoPorNombre(event) {
                     var info = JSON.parse(response);
                     document.getElementById("id").value = info.id;
                     document.getElementById("nombreP").value = info.nombre;
-                    document.getElementById("precioP").value = info.precio;
+                    document.getElementById("codigoP").value = info.codigo;
                     $("#stockD").val(info.cantidad);
                     document.getElementById("cantidad").value = 1;
                     document.getElementById("cantidad").focus();
@@ -253,10 +253,10 @@ function IngresarCantidad(e) {
             })
         } else {
             $.ajax({
-                url: urls,
+                url: base + "Compras/agregarProducto",
                 type: 'POST',
                 async: true,
-                data: $("#frmCompras").serialize(),
+                data: $("#frmCompras").serialize(), // Aquí envías todos los datos del formulario
                 success: function (response) {
                     $('#frmCompras').trigger("reset");
                     $("#buscar_codigo").focus();
@@ -265,19 +265,20 @@ function IngresarCantidad(e) {
                     if (response == 1) {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Se actualizo la cantidad del producto',
+                            title: 'Producto agregado a la lista de compras',
                             showConfirmButton: false,
                             timer: 1500
                         })
-                        ListarCompras();
+                        ListarCompras(); // Actualiza la tabla de compras
                     } else {
-                        ListarCompras();
+                        // Maneja los errores si es necesario
                     }
                 }
             });
         }
     }
 }
+
 
 function BuscarCliente(e) {
     const ruc = $("#ruc_cliente").val();
@@ -311,8 +312,7 @@ function ListarCompras() {
             $("#totalV").html(tl);
         }
     });
-}
-// chart Barra
+}// chart Barra
 
 function reportes() {
     $.ajax({

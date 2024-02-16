@@ -60,7 +60,12 @@ class Compras extends Controllers
                 </td>
             </tr>";
         }
-        $tot = number_format($this->totalPagar, 2, ".", ",");
+        if (isset($this->totalPagar) && is_numeric($this->totalPagar)) {
+            $tot = number_format($this->totalPagar, 2, ".", ",");
+        } else {
+            // Handle the case where $this->totalPagar is not set or not numeric
+            $tot = "0.00"; // Or any other default value or error handling mechanism
+        }
 
         echo "<input type='hidden' id='totalPagar' value='" . $tot . "'/>";
     }
